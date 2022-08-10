@@ -59,6 +59,14 @@ then
         echo -e "\e[0m"
         sleep 10 && bash logo.sh
 
+elif [ $pil = "4" ]
+then 
+	echo -e "\033[31m"
+        echo "Not Working For Now !!!"
+        echo -e "\e[0m"
+        sleep 1 && bash logo.sh
+
+
 elif [ $pil = "5" ]
 then
         clear
