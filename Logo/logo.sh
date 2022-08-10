@@ -19,10 +19,12 @@ echo "+===========www.mbahkliwon.com===============+" && sleep 2
 echo -e "\033[0;32m"
 echo -e "+====================MENU====================+"
 echo -e "Please Choose :"
-echo -e "[1] Install"
-echo -e "[2] Delete"
-echo -e "[3] 18++"
-echo -e "[4] Exit"
+echo -e "[1] Install Node"
+echo -e "[2] Update Node"
+echo -e "[3] Author"
+echo -e "[4] Delete"
+echo -e "[5] 18+ (adult)"
+echo -e "[6] Exit"
 echo -e "+============================================+"
 read -p "Answer :" pil
 echo -e "\e[0m"
@@ -37,11 +39,37 @@ sl && sleep 1
 
 elif [ $pil = "2" ]
 then
-        clear && sleep 1
+	echo -e "\033[31m"
+        echo "Not Working For Now !!!"
+        echo -e "\e[0m"
+        sleep 1 && bash logo.sh
 
 elif [ $pil = "3" ]
 then
-        clear && sleep 1
+	clear
+	echo "====================MENU===================="
+	echo "[+] Twitter  : @oxkliwon"
+	echo "[+] Telegram : @Embahkliwon"
+	echo "[+] Discord  : Mbah Kliwon#0184"
+	echo "[+] GitHub   : https://github.com/garisanku"
+	echo "============================================"
+	echo " "
+	echo -e "\033[31m"
+        echo "Will return to main menu within 5 seconds"
+        echo -e "\e[0m"
+        sleep 10 && bash logo.sh
+
+elif [ $pil = "4" ]
+then 
+	echo -e "\033[31m"
+        echo "Not Working For Now !!!"
+        echo -e "\e[0m"
+        sleep 1 && bash logo.sh
+
+
+elif [ $pil = "5" ]
+then
+        clear
 		echo "_________________¶¶111111¶11111111111111¶¶111¶____"
 echo "_________________¶¶11111¶111111111111111¶¶111¶____"
 echo "________________¶¶111111¶11111111¶¶11¶¶¶¶1111¶____"
@@ -85,9 +113,9 @@ echo "_________¶111111111111111¶¶___¶111¶¶¶¶¶¶¶¶¶¶_1¶___"
 echo "_________¶¶11111111111111¶¶___¶¶1111111¶¶¶____¶___"
 echo "__________¶1111111111111¶¶_____¶111111111¶________"
 
-		sleep 3 && clear && ./tes.sh
+		sleep 3 && clear && ./logo.sh
 
-elif [ $pil = "4" ]
+elif [ $pil = "6" ]
 then
         exit
 
@@ -95,6 +123,6 @@ else
         echo -e "\033[31m"
         echo "Your answer is wrong !!!! "
         echo -e "\e[0m"
-        sleep 1 && bash tes.sh
+        sleep 1 && bash logo.sh
 
 fi
