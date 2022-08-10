@@ -30,9 +30,9 @@ read -p "Answer :" pil
 echo -e "\e[0m"
 if [ $pil = "1" ]
 then
-        echo -e "\e[1m\e[32m# Awas kereta lewat ( cuma sebentar ) \e[0m" && sleep 1
-	sudo apt update
+        sudo apt update
 	apt-get install sl
+	echo -e "\e[1m\e[32m# Awas kereta lewat ( cuma sebentar ) \e[0m" && sleep 1
 
 	echo -e "\e[1m\e[32m# Perhatian Perhatian, Kereta jurusan  JAKARTA ~ SOLO mau melintas \e[0m" && sleep 3
 	echo -e "\e[1m\e[32m# Tuuuuut ~ Tuuuuut \e[0m" && sleep 2
@@ -92,14 +92,17 @@ sed -i -e "s%db-path:.*%db-path: \"$HOME/.sui/db\"%; "\
 	echo -e "\e[1m\e[32m12. Cek node status \e[0m" && sleep 1
 	curl -s -X POST http://127.0.0.1:9000 -H 'Content-Type: application/json' -d '{ "jsonrpc":"2.0", "method":"rpc.discover","id":1}' | jq .result.info
 	
+	sleep3
 	echo -e "\e[1m\e[32m13. Cek 5 TX terakhir \e[0m" && sleep 1
 	curl --location --request POST 'http://127.0.0.1:9000/' --header 'Content-Type: application/json' \
 --data-raw '{ "jsonrpc":"2.0", "id":1, "method":"sui_getRecentTransactions", "params":[5] }' | jq .
 
+	sleep 3
 	echo -e "\e[1m\e[32m14. Dapatkan detail tx \e[0m" && sleep 1
 	curl --location --request POST 'http://127.0.0.1:9000/' --header 'Content-Type: application/json' \
 --data-raw '{ "jsonrpc":"2.0", "id":1, "method":"sui_getTransaction", "params":["<RECENT_TXN_FROM_ABOVE>"] }' | jq .
 	
+	sleep 3
 	echo -e "\e[1m\e[32m# BUAT WALLET SUI \e[0m" && sleep 5
 	echo -e "y\n" | sui client
 	sleep 1
