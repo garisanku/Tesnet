@@ -31,6 +31,7 @@ echo -e "\e[0m"
 if [ $pil = "1" ]
 then
         echo -e "\e[1m\e[32m# Awas kereta lewat ( cuma sebentar ) \e[0m" && sleep 1
+	sudo apt update
 apt-get install sl
 
 echo -e "\e[1m\e[32m# Perhatian Perhatian, Kereta jurusan  JAKARTA ~ SOLO mau melintas \e[0m" && sleep 3
