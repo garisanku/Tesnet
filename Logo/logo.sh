@@ -85,7 +85,7 @@ echo "_________¶111111111111111¶¶___¶111¶¶¶¶¶¶¶¶¶¶_1¶___"
 echo "_________¶¶11111111111111¶¶___¶¶1111111¶¶¶____¶___"
 echo "__________¶1111111111111¶¶_____¶111111111¶________"
 
-		sleep 3 && clear && ./tes.sh
+		sleep 3 && clear && ./logo.sh
 
 elif [ $pil = "4" ]
 then
@@ -95,6 +95,6 @@ else
         echo -e "\033[31m"
         echo "Your answer is wrong !!!! "
         echo -e "\e[0m"
-        sleep 1 && bash tes.sh
+        sleep 1 && bash logo.sh
 
 fi
