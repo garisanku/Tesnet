@@ -92,7 +92,7 @@ sed -i -e "s%db-path:.*%db-path: \"$HOME/.sui/db\"%; "\
 	echo -e "\e[1m\e[32m12. Cek node status \e[0m" && sleep 1
 	curl -s -X POST http://127.0.0.1:9000 -H 'Content-Type: application/json' -d '{ "jsonrpc":"2.0", "method":"rpc.discover","id":1}' | jq .result.info
 	
-	sleep3
+	sleep 3
 	echo -e "\e[1m\e[32m13. Cek 5 TX terakhir \e[0m" && sleep 1
 	curl --location --request POST 'http://127.0.0.1:9000/' --header 'Content-Type: application/json' \
 --data-raw '{ "jsonrpc":"2.0", "id":1, "method":"sui_getRecentTransactions", "params":[5] }' | jq .
@@ -115,7 +115,7 @@ sed -i -e "s%db-path:.*%db-path: \"$HOME/.sui/db\"%; "\
 	echo -e "\e[1m\e[32m# Update Fullnode \e[0m" && sleep 5
 	wget -qO update_sui_source.sh https://raw.githubusercontent.com/garisanku/tesnet/main/Update/update_sui_source.sh && chmod +x update_sui_source.sh && ./update_sui_source.sh
 	
-	echo -e "\e[1m\e[32m# DONE | cek your IP https://node.sui.zvalid.com \e[0m" && sleep 5
+	echo -e "\e[1m\e[32m# DONE | cek your IP https://node.sui.zvalid.com \e[0m" && sleep 1
 	
 	
 	
