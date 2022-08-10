@@ -66,10 +66,10 @@ then
 	$HOME/.sui/fullnode.yaml
 
 	echo -e "\e[1m\e[32m9. Edit config.. \e[0m" && sleep 1
-	sed -i -e "s%db-path:.*%db-path: \"$HOME/.sui/db\"%; "\
-	"s%metrics-address:.*%metrics-address: \"0.0.0.0:9184\"%; "\
-	"s%json-rpc-address:.*%json-rpc-address: \"0.0.0.0:9000\"%; "\
-	"s%genesis-file-location:.*%genesis-file-location: \"$HOME/.sui/genesis.blob\"%; " $HOME/.sui/fullnode.yaml
+sed -i -e "s%db-path:.*%db-path: \"$HOME/.sui/db\"%; "\
+"s%metrics-address:.*%metrics-address: \"0.0.0.0:9184\"%; "\
+"s%json-rpc-address:.*%json-rpc-address: \"0.0.0.0:9000\"%; "\
+"s%genesis-file-location:.*%genesis-file-location: \"$HOME/.sui/genesis.blob\"%; " $HOME/.sui/fullnode.yaml
 
 	echo -e "\e[1m\e[32m10. Buat file service.. \e[0m" && sleep 1
 	printf "[Unit]
@@ -105,6 +105,7 @@ then
 	sleep 1
 	sui client switch --gateway https://gateway.devnet.sui.io:443
 	sleep 1
+	echo -e "\e[1m\e[32m# Ini wallet mu \e[0m" && sleep 1
 	sui client active-address
 	sleep 5
 	
