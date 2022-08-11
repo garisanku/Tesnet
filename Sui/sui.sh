@@ -30,9 +30,9 @@ read -p "Answer :" pil
 echo -e "\e[0m"
 if [ $pil = "1" ]
 then
-        echo -e "\e[1m\e[32m# Awas kereta lewat ( cuma sebentar ) \e[0m" && sleep 1
-	sudo apt update
+        sudo apt update
 	apt-get install sl
+	echo -e "\e[1m\e[32m# Awas kereta lewat ( cuma sebentar ) \e[0m" && sleep 1
 
 	echo -e "\e[1m\e[32m# Perhatian Perhatian, Kereta jurusan  JAKARTA ~ SOLO mau melintas \e[0m" && sleep 3
 	echo -e "\e[1m\e[32m# Tuuuuut ~ Tuuuuut \e[0m" && sleep 2
@@ -66,10 +66,10 @@ then
 	$HOME/.sui/fullnode.yaml
 
 	echo -e "\e[1m\e[32m9. Edit config.. \e[0m" && sleep 1
-	sed -i -e "s%db-path:.*%db-path: \"$HOME/.sui/db\"%; "\
-	"s%metrics-address:.*%metrics-address: \"0.0.0.0:9184\"%; "\
-	"s%json-rpc-address:.*%json-rpc-address: \"0.0.0.0:9000\"%; "\
-	"s%genesis-file-location:.*%genesis-file-location: \"$HOME/.sui/genesis.blob\"%; " $HOME/.sui/fullnode.yaml
+sed -i -e "s%db-path:.*%db-path: \"$HOME/.sui/db\"%; "\
+"s%metrics-address:.*%metrics-address: \"0.0.0.0:9184\"%; "\
+"s%json-rpc-address:.*%json-rpc-address: \"0.0.0.0:9000\"%; "\
+"s%genesis-file-location:.*%genesis-file-location: \"$HOME/.sui/genesis.blob\"%; " $HOME/.sui/fullnode.yaml
 
 	echo -e "\e[1m\e[32m10. Buat file service.. \e[0m" && sleep 1
 	printf "[Unit]
@@ -88,12 +88,41 @@ then
 	sudo systemctl daemon-reload
 	sudo systemctl enable suid
 	sudo systemctl restart suid
+	
+	echo -e "\e[1m\e[32m12. Cek node status \e[0m" && sleep 1
+	curl -s -X POST http://127.0.0.1:9000 -H 'Content-Type: application/json' -d '{ "jsonrpc":"2.0", "method":"rpc.discover","id":1}' | jq .result.info
+	
+	sleep 3
+	echo -e "\e[1m\e[32m13. Cek 5 TX terakhir \e[0m" && sleep 1
+	curl --location --request POST 'http://127.0.0.1:9000/' --header 'Content-Type: application/json' \
+--data-raw '{ "jsonrpc":"2.0", "id":1, "method":"sui_getRecentTransactions", "params":[5] }' | jq .
 
+	sleep 3
+	echo -e "\e[1m\e[32m14. Dapatkan detail tx \e[0m" && sleep 1
+	curl --location --request POST 'http://127.0.0.1:9000/' --header 'Content-Type: application/json' \
+--data-raw '{ "jsonrpc":"2.0", "id":1, "method":"sui_getTransaction", "params":["<RECENT_TXN_FROM_ABOVE>"] }' | jq .
+	
+	sleep 3
+	echo -e "\e[1m\e[32m# BUAT WALLET SUI \e[0m" && sleep 5
+	echo -e "y\n" | sui client
+	sleep 1
+	sui client switch --gateway https://gateway.devnet.sui.io:443
+	sleep 1
+	echo -e "\e[1m\e[32m# Ini wallet mu \e[0m" && sleep 1
+	sui client active-address
+	sleep 5
+	
+	echo -e "\e[1m\e[32m# Update Fullnode \e[0m" && sleep 5
+	wget -qO update_sui_source.sh https://raw.githubusercontent.com/garisanku/tesnet/main/Update/update_sui_source.sh && chmod +x update_sui_source.sh && ./update_sui_source.sh
+	
+	echo -e "\e[1m\e[32m# DONE | cek your IP https://node.sui.zvalid.com \e[0m" && sleep 1
+	
+	
+	
+	
 elif [ $pil = "2" ]
 then
-	echo -e "\033[31m"
-        echo "Not Working For Now !!!"
-        echo -e "\e[0m"
+	wget -qO update_sui_source.sh https://raw.githubusercontent.com/garisanku/tesnet/main/Update/update_sui_source.sh && chmod +x update_sui_source.sh && ./update_sui_source.sh
         sleep 1 && bash sui.sh
 
 elif [ $pil = "3" ]
