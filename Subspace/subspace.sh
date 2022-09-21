@@ -126,7 +126,7 @@ then
 	echo -e "\033[31m"
         echo "Not Working For Now !!!"
         echo -e "\e[0m"
-        sleep 1 && bash logo.sh
+        sleep 1 && bash subspace.sh
 
 elif [ $pil = "3" ]
 then
@@ -141,14 +141,14 @@ then
 	echo -e "\033[31m"
         echo "Will return to main menu within 5 seconds"
         echo -e "\e[0m"
-        sleep 10 && bash logo.sh
+        sleep 10 && bash subspace.sh
 
 elif [ $pil = "4" ]
 then 
 	echo -e "\033[31m"
         echo "Not Working For Now !!!"
         echo -e "\e[0m"
-        sleep 1 && bash logo.sh
+        sleep 1 && bash subspace.sh
 
 
 elif [ $pil = "5" ]
@@ -197,7 +197,7 @@ echo "_________¶111111111111111¶¶___¶111¶¶¶¶¶¶¶¶¶¶_1¶___"
 echo "_________¶¶11111111111111¶¶___¶¶1111111¶¶¶____¶___"
 echo "__________¶1111111111111¶¶_____¶111111111¶________"
 
-		sleep 3 && clear && ./logo.sh
+		sleep 3 && clear && ./subspace.sh
 
 elif [ $pil = "6" ]
 then
@@ -207,6 +207,6 @@ else
         echo -e "\033[31m"
         echo "Your answer is wrong !!!! "
         echo -e "\e[0m"
-        sleep 1 && bash logo.sh
+        sleep 1 && bash subspace.sh
 
 fi
